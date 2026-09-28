@@ -10,7 +10,7 @@ La página comunica tres ideas centrales:
 - **El Valor de los Cercos Vivos:** comparación visual entre vegetación nativa y monocultivo.
 - **Ciencia Aplicada en Terreno:** respaldo de la investigación en agroecología y conservación.
 
-Además, destaca la accesibilidad de la herramienta (audiodescripción y lengua de señas) y su carácter gratuito y abierto.
+Además, destaca la accesibilidad de la herramienta (con audiodescripción) y su carácter gratuito y abierto.
 
 ## Stack
 
