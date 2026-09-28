@@ -2,6 +2,10 @@
 node_modules/
 vendor/
 
+# Salida de build
+dist/
+.wrangler/
+
 # Sistema operativo
 .DS_Store
 Thumbs.db

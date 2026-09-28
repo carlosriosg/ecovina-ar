@@ -1,0 +1,12 @@
+{
+  "name": "ecovina-ar",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page de EcoViña AR: Aliados Invisibles del Campo",
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
