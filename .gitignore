@@ -1,0 +1,25 @@
+# Dependencias
+node_modules/
+vendor/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Registros
+*.log
+npm-debug.log*
+
+# Entorno local
+.env
+.env.local
+
+# Herramientas de desarrollo
+.swarm/
+.opencode/

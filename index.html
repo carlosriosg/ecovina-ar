@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoViña AR | Aliados Invisibles del Campo</title>
+  <meta name="description" content="EcoViña AR es una aplicación de Realidad Aumentada que enseña el control biológico de plagas mediante la conservación de aves y murciélagos en los campos de Chile central." />
+  <meta name="theme-color" content="#2E7D32" />
+  <meta name="author" content="EcoViña AR" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="EcoViña AR | Aliados Invisibles del Campo" />
+  <meta property="og:description" content="Descubre el poder del control biológico en tu predio con Realidad Aumentada." />
+  <meta property="og:locale" content="es_CL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EcoViña AR | Aliados Invisibles del Campo" />
+  <meta name="twitter:description" content="Control biológico de plagas con aves y murciélagos, en Realidad Aumentada y 100% gratuito." />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%8D%87%3C/text%3E%3C/svg%3E" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            hoja: '#2E7D32',
+            hojaOscuro: '#1B5E20',
+            hojaClaro: '#66BB6A',
+            uva: '#5E35B1',
+            uvaOscuro: '#4527A0',
+            arena: '#E8DCC8',
+            tierra: '#8D6E63',
+            crema: '#FAF7F0'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'Segoe UI', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-crema text-slate-800 antialiased">
+
+  <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
+
+  <header id="encabezado" class="site-header fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <nav class="mx-auto max-w-7xl px-5 sm:px-8" aria-label="Navegación principal">
+      <div class="flex h-16 md:h-20 items-center justify-between gap-4">
+
+        <a href="#inicio" class="flex items-center gap-2.5 shrink-0" aria-label="EcoViña AR, ir al inicio">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" role="img" class="h-9 w-9">
+              <defs>
+                <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#66BB6A" />
+                  <stop offset="100%" stop-color="#1B5E20" />
+                </linearGradient>
+              </defs>
+              <circle cx="24" cy="24" r="23" fill="url(#logoGrad)" />
+              <path d="M24 9c6 5 9 11 9 16a9 9 0 0 1-18 0c0-5 3-11 9-16z" fill="#fff" opacity="0.92" />
+              <path d="M24 12v20" stroke="#2E7D32" stroke-width="1.6" stroke-linecap="round" />
+              <path d="M24 18l4-3M24 23l-4-3M24 28l4-3" stroke="#2E7D32" stroke-width="1.4" stroke-linecap="round" />
+              <circle cx="30" cy="34" r="1.8" fill="#5E35B1" />
+              <circle cx="33" cy="31" r="1.4" fill="#5E35B1" opacity="0.8" />
+            </svg>
+          </span>
+          <span class="flex flex-col leading-none">
+            <span class="font-extrabold tracking-tight text-lg text-hojaOscuro">EcoViña <span class="text-uva">AR</span></span>
+            <span class="text-[10px] uppercase tracking-[0.18em] text-tierra font-medium">Aliados invisibles</span>
+          </span>
+        </a>
+
+        <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
+          <li><a class="nav-link" href="#caracteristicas">Características</a></li>
+          <li><a class="nav-link" href="#ciencia">La Ciencia</a></li>
+          <li><a class="nav-link" href="#descargar">Descargar</a></li>
+        </ul>
+
+        <div class="flex items-center gap-2">
+          <a href="#descargar" class="hidden sm:inline-flex btn-primary text-sm px-5 py-2.5">
+            <i class="fa-solid fa-seedling" aria-hidden="true"></i>
+            Únete a la Beta
+          </a>
+          <button id="menuBoton" class="md:hidden rounded-lg p-2.5 text-hojaOscuro hover:bg-hoja/10 transition" aria-expanded="false" aria-controls="menuMovil" aria-label="Abrir menú de navegación">
+            <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="menuMovil" class="md:hidden hidden pb-5">
+        <ul class="flex flex-col gap-1 rounded-2xl bg-white/95 p-3 shadow-xl ring-1 ring-hoja/10 backdrop-blur">
+          <li><a class="menu-movil-link" href="#caracteristicas"><i class="fa-solid fa-wand-magic-sparkles w-5 text-hoja" aria-hidden="true"></i>Características</a></li>
+          <li><a class="menu-movil-link" href="#ciencia"><i class="fa-solid fa-flask w-5 text-hoja" aria-hidden="true"></i>La Ciencia</a></li>
+          <li><a class="menu-movil-link" href="#descargar"><i class="fa-solid fa-mobile-screen-button w-5 text-hoja" aria-hidden="true"></i>Descargar</a></li>
+          <li class="pt-1"><a class="btn-primary justify-center w-full text-sm" href="#descargar">Únete a la Beta</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+
+    <section id="inicio" class="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28 hero-bg">
+      <div class="hero-burbuja hero-burbuja-1" aria-hidden="true"></div>
+      <div class="hero-burbuja hero-burbuja-2" aria-hidden="true"></div>
+
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="grid items-center gap-12 lg:grid-cols-2">
+
+          <div class="reveal">
+            <span class="inline-flex items-center gap-2 rounded-full bg-uva/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-uva ring-1 ring-uva/20">
+              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+              Realidad Aumentada en el campo
+            </span>
+
+            <h1 class="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-hojaOscuro sm:text-5xl lg:text-6xl">
+              Descubre el poder del <span class="texto-degradado">control biológico</span> en tu predio.
+            </h1>
+
+            <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
+              EcoViña AR es una aplicación interactiva de Realidad Aumentada para visibilizar los servicios ecosistémicos de aves y murciélagos en los viñedos y campos de Chile.
+            </p>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="#descargar" class="btn-primary text-base px-7 py-3.5 justify-center">
+                <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+                Únete a la Beta
+              </a>
+              <a href="#ciencia" class="btn-ghost text-base px-7 py-3.5 justify-center">
+                <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                Conoce la ciencia
+              </a>
+            </div>
+
+            <ul class="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-slate-600">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-gift text-hoja" aria-hidden="true"></i>100% gratuita</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-vr-cardboard text-uva" aria-hidden="true"></i>Experiencia AR</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-universal-access text-tierra" aria-hidden="true"></i>Accesible</li>
+            </ul>
+          </div>
+
+          <div class="reveal" data-delay="120">
+            <figure class="relative">
+              <div class="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-tr from-hoja/25 via-uva/20 to-arena/60 blur-2xl" aria-hidden="true"></div>
+              <img
+                id="heroImagen"
+                src="https://images.unsplash.com/photo-1504279577054-acfeccf8fc52?auto=format&fit=crop&w=1400&q=80"
+                alt="Viñedo al atardecer con hileras de vides y cerros en el horizonte del valle central de Chile"
+                class="hero-foto w-full rounded-[1.75rem] object-cover shadow-2xl ring-1 ring-black/5"
+                loading="eager" decoding="async" width="1400" height="900" />
+              <figcaption class="sr-only">Viñedo al atardecer en el valle central de Chile.</figcaption>
+
+              <div class="tarjeta-flotante absolute -bottom-6 -left-2 sm:left-6">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-hoja/10 text-hoja">
+                  <i class="fa-solid fa-mobile-screen-button text-lg" aria-hidden="true"></i>
+                </span>
+                <div>
+                  <p class="text-sm font-semibold text-hojaOscuro">Escanea tu parronal</p>
+                  <p class="text-xs text-slate-500">Aves y murciélagos en tiempo real</p>
+                </div>
+              </div>
+            </figure>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="caracteristicas" class="scroll-mt-24 py-20 md:py-28">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="mx-auto max-w-2xl text-center reveal">
+          <span class="etiqueta-seccion">Características</span>
+          <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-hojaOscuro sm:text-4xl">
+            Tres formas de ver el campo con otros ojos
+          </h2>
+          <p class="mt-4 text-lg text-slate-600">
+            Explora, compara y aprende cómo la biodiversidad trabaja cada noche por tus cultivos.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-7 md:grid-cols-3">
+
+          <article class="tarjeta reveal" data-delay="0">
+            <div class="tarjeta-ilustracion bg-gradient-to-br from-uva/15 to-uva/5">
+              <svg viewBox="0 0 200 140" role="img" aria-label="Ilustración de un murciélago emitiendo ondas de ecolocalización" class="h-32 w-full">
+                <defs>
+                  <linearGradient id="batGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#7E57C2" />
+                    <stop offset="100%" stop-color="#4527A0" />
+                  </linearGradient>
+                </defs>
+                <circle cx="100" cy="70" r="55" fill="none" stroke="#5E35B1" stroke-width="1.5" opacity="0.18" />
+                <circle cx="100" cy="70" r="38" fill="none" stroke="#5E35B1" stroke-width="1.5" opacity="0.28" />
+                <circle cx="100" cy="70" r="22" fill="none" stroke="#5E35B1" stroke-width="1.5" opacity="0.4" />
+                <path d="M100 62c-6-14-20-22-38-20 4 8 6 14 4 22 8 2 14 6 18 12 4-5 10-9 16-9z" fill="url(#batGrad)" />
+                <path d="M100 62c6-14 20-22 38-20-4 8-6 14-4 22-8 2-14 6-18 12-4-5-10-9-16-9z" fill="url(#batGrad)" />
+                <ellipse cx="100" cy="66" rx="11" ry="13" fill="url(#batGrad)" />
+                <path d="M94 54l-3-7 6 3zM106 54l3-7-6 3z" fill="#4527A0" />
+                <circle cx="96" cy="64" r="1.6" fill="#fff" />
+                <circle cx="104" cy="64" r="1.6" fill="#fff" />
+                <path d="M60 96c10-6 20-6 30-2M140 96c-10-6-20-6-30-2" stroke="#66BB6A" stroke-width="2" stroke-linecap="round" fill="none" />
+              </svg>
+            </div>
+            <h3 class="mt-6 text-xl font-bold text-hojaOscuro">Ecolocalización en Acción</h3>
+            <p class="mt-3 leading-relaxed text-slate-600">
+              Observa simulaciones 3D de cómo los murciélagos cazan polillas nocturnas protegiendo tus cultivos.
+            </p>
+            <ul class="mt-5 space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check mt-0.5 text-hoja" aria-hidden="true"></i>Modelos 3D interactivos</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check mt-0.5 text-hoja" aria-hidden="true"></i>Sonido de ecolocalización</li>
+            </ul>
+          </article>
+
+          <article class="tarjeta reveal" data-delay="120">
+            <div class="tarjeta-ilustracion bg-gradient-to-br from-hoja/15 to-hoja/5">
+              <svg viewBox="0 0 200 140" role="img" aria-label="Ilustración de aves posadas en árboles de un cerco vivo" class="h-32 w-full">
+                <defs>
+                  <linearGradient id="treeGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#66BB6A" />
+                    <stop offset="100%" stop-color="#2E7D32" />
+                  </linearGradient>
+                </defs>
+                <rect x="0" y="112" width="200" height="28" rx="8" fill="#8D6E63" opacity="0.25" />
+                <rect x="92" y="70" width="6" height="46" rx="3" fill="#8D6E63" />
+                <rect x="52" y="80" width="5" height="36" rx="2.5" fill="#8D6E63" />
+                <rect x="136" y="76" width="5" height="40" rx="2.5" fill="#8D6E63" />
+                <circle cx="95" cy="58" r="24" fill="url(#treeGrad)" />
+                <circle cx="54" cy="70" r="17" fill="url(#treeGrad)" opacity="0.9" />
+                <circle cx="138" cy="66" r="18" fill="url(#treeGrad)" opacity="0.9" />
+                <path d="M60 58c4-4 9-5 13-2-3 4-9 5-13 2z" fill="#4527A0" />
+                <circle cx="66" cy="56" r="2.4" fill="#4527A0" />
+                <path d="M70 55l5-2-5-2z" fill="#F9A825" />
+                <path d="M132 54c4-4 9-5 13-2-3 4-9 5-13 2z" fill="#5E35B1" />
+                <circle cx="138" cy="52" r="2.4" fill="#5E35B1" />
+                <path d="M142 51l5-2-5-2z" fill="#F9A825" />
+                <path d="M88 44c3-3 7-4 10-1-2 3-7 4-10 1z" fill="#2E7D32" />
+                <circle cx="93" cy="43" r="2" fill="#2E7D32" />
+              </svg>
+            </div>
+            <h3 class="mt-6 text-xl font-bold text-hojaOscuro">El Valor de los Cercos Vivos</h3>
+            <p class="mt-3 leading-relaxed text-slate-600">
+              Compara visualmente cómo la vegetación nativa atrae aves beneficiosas frente a un monocultivo tradicional.
+            </p>
+            <ul class="mt-5 space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check mt-0.5 text-hoja" aria-hidden="true"></i>Comparador lado a lado</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check mt-0.5 text-hoja" aria-hidden="true"></i>Catálogo de especies nativas</li>
+            </ul>
+          </article>
+
+          <article class="tarjeta reveal" data-delay="240">
+            <div class="tarjeta-ilustracion bg-gradient-to-br from-tierra/15 to-arena/20">
+              <svg viewBox="0 0 200 140" role="img" aria-label="Ilustración de un microscopio símbolo de la investigación científica" class="h-32 w-full">
+                <defs>
+                  <linearGradient id="microGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#8D6E63" />
+                    <stop offset="100%" stop-color="#5D4037" />
+                  </linearGradient>
+                </defs>
+                <rect x="64" y="112" width="72" height="9" rx="4.5" fill="url(#microGrad)" />
+                <rect x="92" y="60" width="14" height="52" rx="7" fill="url(#microGrad)" />
+                <path d="M84 60h30l-6-26h-18z" fill="url(#microGrad)" />
+                <rect x="88" y="26" width="22" height="10" rx="5" fill="#4527A0" />
+                <rect x="96" y="36" width="6" height="14" rx="3" fill="#5E35B1" />
+                <circle cx="99" cy="56" r="4" fill="#F9A825" />
+                <path d="M70 88h-14a8 8 0 0 0 0 16h14" fill="none" stroke="url(#microGrad)" stroke-width="4" stroke-linecap="round" />
+                <circle cx="150" cy="44" r="12" fill="none" stroke="#2E7D32" stroke-width="2" opacity="0.5" />
+                <path d="M150 38v12M144 44h12" stroke="#2E7D32" stroke-width="2" stroke-linecap="round" />
+                <circle cx="46" cy="52" r="7" fill="#66BB6A" opacity="0.6" />
+                <circle cx="160" cy="80" r="5" fill="#5E35B1" opacity="0.45" />
+              </svg>
+            </div>
+            <h3 class="mt-6 text-xl font-bold text-hojaOscuro">Ciencia Aplicada en Terreno</h3>
+            <p class="mt-3 leading-relaxed text-slate-600">
+              Herramienta respaldada por las últimas investigaciones en agroecología y conservación.
+            </p>
+            <ul class="mt-5 space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check mt-0.5 text-hoja" aria-hidden="true"></i>Datos de estudios reales</li>
+              <li class="flex items-start gap-2"><i class="fa-solid fa-check mt-0.5 text-hoja" aria-hidden="true"></i>Recomendaciones por temporada</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="ciencia" class="scroll-mt-24 relative overflow-hidden py-20 md:py-28 ciencia-bg">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="grid items-center gap-14 lg:grid-cols-2">
+
+          <div class="reveal">
+            <span class="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-uva ring-1 ring-uva/20">
+              <i class="fa-solid fa-flask" aria-hidden="true"></i>
+              Acerca de la Ciencia
+            </span>
+            <h2 class="mt-5 text-3xl font-extrabold tracking-tight text-hojaOscuro sm:text-4xl">
+              Ciencia compleja, explicada para el campo
+            </h2>
+            <p class="mt-5 text-lg leading-relaxed text-slate-700">
+              Desarrollada en colaboración con expertos en agroecología, esta herramienta traduce datos científicos complejos en una experiencia visual 100% gratuita y accesible (con audiodescripción y lengua de señas).
+            </p>
+
+            <div class="mt-8 grid gap-4 sm:grid-cols-2">
+              <div class="mini-tarjeta">
+                <i class="fa-solid fa-ear-listen text-hoja text-xl" aria-hidden="true"></i>
+                <p class="mt-2 font-semibold text-hojaOscuro">Audiodescripción</p>
+                <p class="text-sm text-slate-600">Cada escena narrada en detalle.</p>
+              </div>
+              <div class="mini-tarjeta">
+                <i class="fa-solid fa-hands text-uva text-xl" aria-hidden="true"></i>
+                <p class="mt-2 font-semibold text-hojaOscuro">Lengua de señas</p>
+                <p class="text-sm text-slate-600">Contenido inclusivo en video.</p>
+              </div>
+              <div class="mini-tarjeta">
+                <i class="fa-solid fa-microscope text-tierra text-xl" aria-hidden="true"></i>
+                <p class="mt-2 font-semibold text-hojaOscuro">Base científica</p>
+                <p class="text-sm text-slate-600">Estudios de agroecología aplicada.</p>
+              </div>
+              <div class="mini-tarjeta">
+                <i class="fa-solid fa-heart text-uva text-xl" aria-hidden="true"></i>
+                <p class="mt-2 font-semibold text-hojaOscuro">Sin costo</p>
+                <p class="text-sm text-slate-600">Acceso libre para toda la comunidad.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal" data-delay="140">
+            <div class="panel-ciencia">
+              <svg viewBox="0 0 420 340" role="img" aria-label="Diagrama del ecosistema agrícola con aves, murciélagos, insectos y cultivos conectados" class="w-full">
+                <defs>
+                  <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#E8DCC8" />
+                    <stop offset="100%" stop-color="#FAF7F0" />
+                  </linearGradient>
+                  <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#66BB6A" />
+                    <stop offset="100%" stop-color="#2E7D32" />
+                  </linearGradient>
+                </defs>
+                <rect x="10" y="10" width="400" height="320" rx="22" fill="url(#skyGrad)" />
+                <path d="M10 250c60-24 120-24 200-8s130 18 200-6v94H10z" fill="url(#landGrad)" opacity="0.85" />
+                <circle cx="340" cy="70" r="26" fill="#F9A825" opacity="0.85" />
+                <path d="M84 150c10-14 26-18 38-8-8 12-26 18-38 8z" fill="#5E35B1" />
+                <circle cx="96" cy="146" r="4" fill="#4527A0" />
+                <path d="M196 108c8-11 21-14 31-6-7 10-21 14-31 6z" fill="#2E7D32" />
+                <circle cx="206" cy="105" r="3.4" fill="#1B5E20" />
+                <path d="M150 196c6-8 15-10 22-4-5 7-15 10-22 4z" fill="#8D6E63" />
+                <circle cx="228" cy="188" r="5" fill="#F9A825" />
+                <circle cx="248" cy="200" r="4" fill="#F9A825" opacity="0.8" />
+                <path d="M92 230c8-22 28-30 48-24-4 22-24 34-48 24z" fill="#1B5E20" opacity="0.85" />
+                <path d="M300 236c6-20 24-30 44-24-4 20-22 32-44 24z" fill="#1B5E20" opacity="0.85" />
+                <path d="M84 124c26 6 44 22 52 48" stroke="#5E35B1" stroke-width="1.6" fill="none" stroke-dasharray="5 5" opacity="0.6" />
+                <path d="M196 132c8 20 14 40 14 62" stroke="#2E7D32" stroke-width="1.6" fill="none" stroke-dasharray="5 5" opacity="0.6" />
+                <path d="M150 214c20 6 34 16 44 30" stroke="#8D6E63" stroke-width="1.6" fill="none" stroke-dasharray="5 5" opacity="0.6" />
+                <text x="238" y="300" font-family="Inter, sans-serif" font-size="13" fill="#1B5E20" font-weight="700">Control biológico natural</text>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="descargar" class="scroll-mt-24 py-20 md:py-28">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="descarga-panel reveal">
+          <div class="grid items-center gap-10 md:grid-cols-[1.4fr_1fr]">
+            <div>
+              <span class="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white ring-1 ring-white/25">
+                <i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>
+                Disponible pronto
+              </span>
+              <h2 class="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                Sé de los primeros en probar EcoViña AR
+              </h2>
+              <p class="mt-4 max-w-xl text-lg text-white/85">
+                Regístrate en la beta y recibe acceso anticipado a las experiencias de Realidad Aumentada, junto a guías de conservación para tu predio.
+              </p>
+
+              <form id="formBeta" class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center" novalidate>
+                <label for="correo" class="sr-only">Correo electrónico</label>
+                <input id="correo" name="correo" type="email" required placeholder="tu@correo.cl"
+                  class="w-full rounded-xl border-0 px-5 py-3.5 text-slate-800 shadow-sm outline-none ring-2 ring-transparent placeholder:text-slate-400 focus:ring-hojaClaro" />
+                <button type="submit" class="btn-claro shrink-0 justify-center">
+                  <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                  Unirme
+                </button>
+              </form>
+              <p id="formMensaje" class="mt-3 min-h-[1.25rem] text-sm font-medium text-white/90" role="status" aria-live="polite"></p>
+
+              <div class="mt-7 flex flex-wrap gap-3">
+                <span class="tienda-boton" aria-disabled="true">
+                  <i class="fa-brands fa-apple text-xl" aria-hidden="true"></i>
+                  <span><span class="block text-[10px] uppercase tracking-wider opacity-70">Próximamente</span>App Store</span>
+                </span>
+                <span class="tienda-boton" aria-disabled="true">
+                  <i class="fa-brands fa-google-play text-lg" aria-hidden="true"></i>
+                  <span><span class="block text-[10px] uppercase tracking-wider opacity-70">Próximamente</span>Google Play</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="flex justify-center">
+              <div class="codigo-panel">
+                <div class="codigo-cuadricula" aria-hidden="true"></div>
+                <p class="mt-4 text-center text-sm font-semibold text-hojaOscuro">Escanea para la beta</p>
+                <p class="mt-1 text-center text-xs text-slate-500">Apunta la cámara de tu teléfono</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-hojaOscuro text-white/80">
+    <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8">
+      <div class="grid gap-10 md:grid-cols-3">
+
+        <div>
+          <div class="flex items-center gap-2.5">
+            <svg viewBox="0 0 48 48" role="img" aria-label="Logo EcoViña AR" class="h-9 w-9">
+              <circle cx="24" cy="24" r="23" fill="#66BB6A" />
+              <path d="M24 9c6 5 9 11 9 16a9 9 0 0 1-18 0c0-5 3-11 9-16z" fill="#fff" opacity="0.94" />
+              <path d="M24 12v20" stroke="#2E7D32" stroke-width="1.6" stroke-linecap="round" />
+              <path d="M24 18l4-3M24 23l-4-3M24 28l4-3" stroke="#2E7D32" stroke-width="1.4" stroke-linecap="round" />
+            </svg>
+            <span class="font-extrabold text-lg text-white">EcoViña <span class="text-hojaClaro">AR</span></span>
+          </div>
+          <p class="mt-4 max-w-xs text-sm leading-relaxed">
+            Aliados Invisibles del Campo. Tecnología y ciencia al servicio de la agricultura sustentable de Chile central.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold uppercase tracking-wider text-white">Navegación</h2>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><a href="#caracteristicas" class="footer-link">Características</a></li>
+            <li><a href="#ciencia" class="footer-link">La Ciencia</a></li>
+            <li><a href="#descargar" class="footer-link">Descargar</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold uppercase tracking-wider text-white">Contacto</h2>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li>
+              <a href="mailto:carlos@dar2.cl" class="footer-link">
+                <i class="fa-solid fa-envelope mr-2" aria-hidden="true"></i>carlos@dar2.cl
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/carlosriosg" target="_blank" rel="noopener noreferrer" class="footer-link">
+                <i class="fa-brands fa-github mr-2" aria-hidden="true"></i>github.com/carlosriosg
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/15 pt-6 text-xs sm:flex-row">
+        <p>&copy; <span id="anioActual">2026</span> EcoViña AR. Todos los derechos reservados.</p>
+        <p class="flex items-center gap-2">
+          <i class="fa-solid fa-leaf text-hojaClaro" aria-hidden="true"></i>
+          Hecho para la comunidad agrícola de Chile central.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
